@@ -24,4 +24,16 @@ class ScrabbleTest < Minitest::Test
   def test_it_selects_the_highest_scoring_word_from_group
     assert_equal "home", Scrabble.highest_score_from(['home', 'word', 'hello', 'sound'])
   end
+
+  def test_it_breaks_tie_via_fewer_letters
+    assert_equal "word", Scrabble.highest_score_from(['hello', 'word', 'sound'])
+  end
+
+  def test_it_breaks_tie_via_lucky_number_seven
+    assert_equal "silence", Scrabble.highest_score_from(['home', 'word', 'silence'])
+  end
+
+  def test_it_breaks_tie_with_first_one_in_supplied_list
+    assert_equal "word", Scrabble.highest_score_from(['hi', 'word', 'ward'])
+  end
 end

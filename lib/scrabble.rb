@@ -35,9 +35,16 @@ class Scrabble
       if score(word) > highest_score
         highest_score = score(word)
         high_word = word
+      elsif score(word) == highest_score
+        if word.chars.count == 7
+          highest_score = score(word)
+          high_word = word
+        elsif word.chars.count < high_word.chars.count
+          highest_score = score(word)
+          high_word = word
+        end
       end
     end
     high_word
-
   end
 end
